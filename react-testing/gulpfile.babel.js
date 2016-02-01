@@ -22,6 +22,13 @@ gulp.task('template', () => {
     .pipe(browserSync.stream())
 })
 
+gulp.task('copy', () => {
+  return gulp
+    .src('./src/api/**.*')
+    .pipe(gulp.dest('./dist/api'))
+    .pipe(browserSync.stream())
+})
+
 gulp.task('script', () => {
   const bundler = browserify('./src/js/app.js', {
     }).transform(babelify, {
@@ -49,7 +56,7 @@ gulp.task('script', () => {
 })
 
 gulp.task('serve', () => {
-  runSequence('clean', ['template', 'script'], () => {
+  runSequence('clean', ['copy', 'template', 'script'], () => {
     browserSync.init({
       server: './dist',
       open: false
@@ -59,8 +66,6 @@ gulp.task('serve', () => {
   gulp
     .watch(['./dist/*.html'])
     .on('change', browserSync.reload)
-
-  gulp.watch(['./dist/js/*.js'], ['script'])
 
   gulp.watch(['./src/*.html'], ['template'])
   gulp.watch(['./src/js/**/*.js'], ['script'])

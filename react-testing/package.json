@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "babel-tape-runner ./test/*.js | faucet"
+    "test": "babel-tape-runner ./test/*-test.js | faucet"
   },
   "author": "",
   "license": "ISC",
@@ -31,6 +31,8 @@
     "gulp": "^3.9.0",
     "gulp-postcss": "^6.0.1",
     "gulp-sass": "^2.1.1",
+    "isomorphic-fetch": "^2.2.1",
+    "jsdom": "^8.0.2",
     "postcss-assets": "^4.0.0",
     "postcss-calc": "^5.2.0",
     "postcss-clearfix": "^0.2.0",
