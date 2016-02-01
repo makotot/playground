@@ -1,4 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-ReactDOM.render(<span>Hello</span>, document.getElementById('app'))
+import { Foo } from './components/foo'
+
+ReactDOM.render(<Foo />, document.getElementById('app'))
