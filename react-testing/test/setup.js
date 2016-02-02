@@ -6,6 +6,20 @@ function setupDom() {
     global.window = document.defaultView;
     global.navigator = window.navigator;
   }
+
+  propagateToGlobal(window)
+
+  function propagateToGlobal (window) {
+    for (let key in window) {
+      if (!window.hasOwnProperty(key)) {
+        continue
+      }
+      if (key in global) {
+        continue
+      }
+      global[key] = window[key]
+    }
+  }
 }
 
 setupDom();

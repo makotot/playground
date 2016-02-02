@@ -14,7 +14,7 @@ export class Bar extends React.Component {
   }
 
   componentDidMount () {
-    fetch('./api/dummy.json')
+    window.fetch('./api/dummy.json')
       .then((response) => {
         return response.json()
       })
