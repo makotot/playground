@@ -153,3 +153,5 @@ bower.json
 *.css.map
 
 
+
+.vagrant/
