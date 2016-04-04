@@ -49,4 +49,21 @@ Rubyでは`false`と`nil`以外はすべて真の値。
 `if`に与えた条件式が真の場合にif中の処理を実行する。偽の場合に実行する処理は`else`節に記述。複数の条件式で分岐の場合には`elsif`を使う。
 
 
+## class
+
+クラス内で定義したメソッドはそのクラスのインスタンスで呼び出せる。
+
+```rb
+class MyClass
+  def hello
+    ...
+  end
+end
+```
+
+クラスからインスタンスを作るには`.new`を使う。
+```rb
+myClass = MyClass.new
+myClass.hello
+```
 
