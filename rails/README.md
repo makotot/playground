@@ -54,3 +54,14 @@ app/models配下。
 
 新規作成(Create)、表示(Read)、更新(Update)、削除(Delete)の４つの機能を指す用語。
 
+
+
+## blog作成
+
+```sh
+$ rails new til
+$ cd til
+$ bundle exec rails g scaffold post title:string body:string
+$ rake db:migrate
+```
+
