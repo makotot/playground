@@ -35,11 +35,19 @@ Routesは`config/routes.rb`に記述する。
 
 ## controller
 
+
 ## view
 
 `render`メソッドで別ファイルを埋め込める。埋め込み用のviewファイルをパーシャルと呼ぶ。  
-`<%= render partial_file_name, パーシャルで使う変数:渡す変数` %>`  
+`<%= render partial_file_name, パーシャルで使う変数:渡す変数 %>`  
 パーシャルファイルは`_`始まりのファイル名にするのがルール。
+
+
+## model
+
+app/models配下。  
+モデル名は英語の単数形、大文字始まりにするのがルール。  
+モデルはRubyでdbを扱いやすくする機能を持ってる。
 
 
 ## CRUD
