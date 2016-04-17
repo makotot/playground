@@ -103,3 +103,18 @@ Gemfileにmysqlを追加。
 gem 'mysql2'
 ```
 
+
+### カラム追加
+
+https://joppot.info/2014/05/23/1430
+
+`rails g migration Add[カラム名]To[テーブル名] カラム名:型`で追加。
+
+```sh
+$ bundle exec rails g migration AddTagToPosts tag:string
+```
+カラムに変更を加えたらmigrate
+```sh
+$ bundle exec rake db:migrate
+```
+
