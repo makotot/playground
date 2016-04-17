@@ -3,7 +3,9 @@
 one:
   title: MyString
   body: MyString
+  tag: MyString
 
 two:
   title: MyString
   body: MyString
+  tag: MyString
