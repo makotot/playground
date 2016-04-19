@@ -147,3 +147,25 @@ $ bundle exec unicorn_rails -c config/unicorn.rb -p 8080
 ```
 `unicorn_rails`でサーバ起動。
 
+
+### カラムの型変更
+
+```sh
+$ rails g migration クラス名
+```
+クラス名は何でも良い？
+
+生成されたmigrationファイルに`up`/`down`メソッドを記述しておくと、ロールバックできる？
+```rb
+class ChangeColumnToPost < ActiveRecord::Migration
+  def up
+    change_column :posts, :body, :text
+  end
+
+  def down
+    change_column :posts, :body, :string
+  end
+
+end
+```
+
