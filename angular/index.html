@@ -3,14 +3,16 @@
 	<head>
 		<meta charset="utf-8">
 		<title>angular app</title>
-		<link rel="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" href="./css/app.css">
 	</head>
 	<body>
-		<div ng-controller="sampleCtrl as ctrl">
-			<div class="form-group">
-				<div>this.name: {{ ctrl.name }}</div>
-				<input type="text" ng-model="ctrl.name" class="form-control" />
+		<div class="container">
+			<div ng-controller="sampleCtrl as ctrl">
+				<div class="form-group">
+					<div class="help-block">this.name: {{ ctrl.name }}</div>
+					<input type="text" ng-model="ctrl.name" class="form-control" />
+				</div>
 			</div>
 		</div>
 
