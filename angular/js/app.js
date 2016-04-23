@@ -18,10 +18,18 @@ app.controller('topCtrl', ['$localStorage', function ($localStorage) {
   });
 
   this.save = function () {
+    if (!this.todo) {
+      return;
+    }
+
     this.$storage.todos.push({
       todo: this.todo,
       done: false
     });
+  };
+
+  this.resetAll = function () {
+    this.$storage.$reset();
   };
 
 }]);
