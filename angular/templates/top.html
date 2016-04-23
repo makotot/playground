@@ -9,7 +9,7 @@
 </form>
 
 <ul class="list-group">
-	<li class="list-group-item" ng-repeat="todo in ctrl.$storage.todos">
+	<li class="list-group-item" ng-repeat="todo in ctrl.$storage.todos | orderBy: '-'">
 		{{ todo.todo }}
 	</li>
 </ul>
