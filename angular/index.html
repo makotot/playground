@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html>
 	<head>
 		<meta charset="utf-8">
 		<title>angular app</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" href="./css/app.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+		<script src="./js/app.js"></script>
 	</head>
-	<body>
+	<body ng-app="myApp">
 		<div class="container">
-			<div ng-controller="sampleCtrl as ctrl">
-				<div class="form-group">
-					<div class="help-block">this.name: {{ ctrl.name }}</div>
-					<input type="text" ng-model="ctrl.name" class="form-control" />
-				</div>
+
+			<div ui-view>
 			</div>
 		</div>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-		<script src="./js/app.js"></script>
 	</body>
 </html>

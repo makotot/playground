@@ -1,5 +1,13 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ui.router']);
 
-app.controller('sampleCtrl', function () {
-  this.name = 'sample';
-});
+app
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('top');
+
+    $stateProvider.state('top', {
+      url: '/',
+      templateUrl: 'top.html',
+      controller: 'topCtrl as ctrl'
+    });
+  });
+
