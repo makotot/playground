@@ -13,17 +13,25 @@ app
 
 app.controller('topCtrl', ['$localStorage', function ($localStorage) {
 
-  this.$storage = $localStorage.$default({
-    todos: []
-  });
+  this.init = function () {
+    this.$storage = $localStorage.$default({
+      todos: [
+      ]
+    });
+  };
 
   this.save = function () {
     if (!this.todo) {
       return;
     }
 
-    this.$storage.todos.push({
+    if (!this.$storage.todos) {
+      this.init();
+    }
+
+    this.$storage.todos.unshift({
       todo: this.todo,
+      memo: this.memo || '',
       done: false
     });
   };
@@ -32,4 +40,9 @@ app.controller('topCtrl', ['$localStorage', function ($localStorage) {
     this.$storage.$reset();
   };
 
+  this.done = function (index) {
+    this.$storage.todos.splice(index, 1);
+  };
+
+  this.init();
 }]);

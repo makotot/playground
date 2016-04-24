@@ -1,7 +1,13 @@
 <form ng-submit="ctrl.save()">
 	<div class="form-group">
-		<label for="todo">Todo</label>
-		<input type="text" id="todo" placeholder="Todo" class="form-control" ng-model="ctrl.todo" />
+		<div class="form-group">
+			<label for="todo">Todo</label>
+			<input type="text" id="todo" placeholder="Todo" class="form-control" ng-model="ctrl.todo" required />
+		</div>
+		<div class="form-group">
+			<label for="memo">Memo</label>
+			<textarea id="memo" placeholder="Memo" class="form-control" ng-model="ctrl.memo"></textarea>
+		</div>
 	</div>
 	<div class="form-group">
 		<button type="submit" class="btn btn-default">Add</button>
@@ -10,7 +16,15 @@
 </form>
 
 <ul class="list-group">
-	<li class="list-group-item" ng-repeat="todo in ctrl.$storage.todos | orderBy: '-'">
-		{{ todo.todo }}
+	<li class="list-group-item" ng-repeat="todo in ctrl.$storage.todos">
+		<div class="clearfix">
+			<div class="pull-left">
+				<div><strong>{{ todo.todo }}</strong></div>
+				<div ng-if="todo.memo">{{ todo.memo }}</div>
+			</div>
+			<div class="pull-right">
+				<button type="button" class="btn btn-primary" ng-click="ctrl.done($index)">Done</button>
+			</div>
+		</div>
 	</li>
 </ul>
