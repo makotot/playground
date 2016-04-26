@@ -44,5 +44,20 @@ app.controller('topCtrl', ['$localStorage', function ($localStorage) {
     this.$storage.todos.splice(index, 1);
   };
 
+  this.search = function () {
+  };
+
   this.init();
 }]);
+
+app.filter('queryFilter', function () {
+  return function (items, query) {
+    var filtered = [];
+
+    angular.forEach(items, function (item) {
+      filtered.push(item);
+    });
+
+    return filtered;
+  };
+});
