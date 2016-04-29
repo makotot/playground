@@ -22,6 +22,29 @@ railsアプリの作成
 $ rails new [app name]
 ```
 
+`new`で以下のようなディレクトリ、ファイル群が生成される。
+```sh
+❯ tree -L 1
+.
+├── Gemfile
+├── Gemfile.lock
+├── README.rdoc
+├── Rakefile
+├── app
+├── bin
+├── config
+├── config.ru
+├── db
+├── lib
+├── log
+├── public
+├── test
+├── tmp
+└── vendor
+
+10 directories, 5 files
+```
+
 ローカルサーバの起動
 ```sh
 $ rails s
