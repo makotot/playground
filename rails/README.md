@@ -1,5 +1,21 @@
 # Rails
 
+## DRY
+
+Don't Repeat Yourself
+
+
+## CoC
+
+Convention over Configuration
+
+
+## MVC
+
+- model: データ
+- view: 画面
+- controller: modelとviewをとりもつもの
+
 
 railsアプリの作成
 ```sh
@@ -168,4 +184,10 @@ class ChangeColumnToPost < ActiveRecord::Migration
 
 end
 ```
+
+
+
+## Links
+
+- [Ruby on Rails 4入門 (全28回) - プログラミングならドットインストール](http://dotinstall.com/lessons/basic_rails_v2)
 
