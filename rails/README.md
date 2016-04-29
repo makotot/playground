@@ -208,6 +208,15 @@ class ChangeColumnToPost < ActiveRecord::Migration
 end
 ```
 
+## scaffold
+
+```
+$ rails g scaffold User name:string score:integer
+$ rake db:migrate # db作成
+$ rails s
+```
+`localhost:3000/users/`が出来上がってる。
+
 
 
 ## Links
