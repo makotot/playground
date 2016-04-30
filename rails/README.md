@@ -324,7 +324,7 @@ Running via Spring preloader in process 31316
       create      app/assets/stylesheets/projects.scss
 ```
 
-`config/routes.rb`に`products`を追加。
+`config/routes.rb`に`projects`を追加。
 
 ```rb
 Rails.application.routes.draw do
@@ -341,7 +341,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :products # projectsに関するURLを自動生成してくれる
+  resources :projects # projectsに関するURLを自動生成してくれる
 ```
 
 `rake routes`で`projects`が反映されていることを確認できる。
@@ -359,9 +359,50 @@ edit_product GET    /products/:id/edit(.:format) products#edit
              DELETE /products/:id(.:format)      products#destroy
 ```
 
+### 一覧表示
+
+`app/controllers/projects_controller.rb`に`index`をつくる。
+```rb
+class ProjectsController < ApplicationController
+
+  def index
+    @projects = Project.all
+    # @始まりの変数はviewでそのまま使える
+  end
+end
+```
+
+`app/views/projects/`にerbファイルをつくる。
+```sh
+$ touch app/views/projects/index.html.erb
+```
+
+```erb
+<h1>Projects</h1>
+<ul>
+  <% @projects.each do |project| %>
+    <li><%= project.title %></li>
+  <% end %>
+</ul>
+```
+
+
+## rails.vim
+
+`projects`コントローラへの移動。
+```
+:Econtroller projects
+```
+
+`project`モデルへの移動。
+```
+:Emodel project
+```
+
 
 
 ## Links
 
 - [Ruby on Rails 4入門 (全28回) - プログラミングならドットインストール](http://dotinstall.com/lessons/basic_rails_v2)
+- [tpope/vim-rails: rails.vim: Ruby on Rails power tools](https://github.com/tpope/vim-rails)
 
