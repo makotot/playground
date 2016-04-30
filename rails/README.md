@@ -387,6 +387,22 @@ $ touch app/views/projects/index.html.erb
 ```
 
 
+### 共通のテンプレート
+
+`app/views/layouts/application.html.erb`が共通のテンプレート。  
+`<%= yield %>`が各ページの中身になる。
+
+
+### image_tag
+
+画像のヘルパータグ。`<%= image_tag "image-name.png" %>`で、`app/assets/images/`配下の画像を参照できる。
+
+
+### link_to
+
+リンクのヘルパータグ。`<%= link_to "link text", "url" %>`。
+
+
 ## rails.vim
 
 `projects`コントローラへの移動。
