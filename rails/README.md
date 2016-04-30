@@ -210,12 +210,169 @@ end
 
 ## scaffold
 
-```
+```sh
 $ rails g scaffold User name:string score:integer
 $ rake db:migrate # db作成
 $ rails s
 ```
 `localhost:3000/users/`が出来上がってる。
+
+
+## TaskApp
+
+```sh
+$ rails new taskapp
+$ cd taskapp
+$ rails s
+```
+
+
+### model作成
+
+```sh
+$ rails g model Project title:string
+Running via Spring preloader in process 31017
+      invoke  active_record
+      create    db/migrate/20160430031222_create_projects.rb
+      create    app/models/project.rb
+      invoke    test_unit
+      create      test/models/project_test.rb
+      create      test/fixtures/projects.yml
+```
+modelは単数形かつ大文字始まりで。
+型はデフォルトがstringなのでstringの場合は省略可。
+
+```
+$ rake db:migrate
+== 20160430031222 CreateProjects: migrating ===================================
+-- create_table(:projects)
+   -> 0.0018s
+== 20160430031222 CreateProjects: migrated (0.0018s) ==========================
+```
+`migrate`でDBに反映。
+
+
+### DB
+
+現在使用中のDBに`rails db`でアクセスできる。
+```sh
+$ rails db
+SQLite version 3.8.5 2014-08-15 22:37:57
+Enter ".help" for usage hints.
+sqlite>
+```
+
+sqliteなら`.schema`でテーブル構造を確認できる。
+```sh
+sqlite> .schema
+CREATE TABLE "schema_migrations" ("version" varchar NOT NULL);
+CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version");
+CREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+```
+
+
+### console
+
+`rails console`でコンソールが起動出来る。
+
+```sh
+$ rails console # rails c でもok
+Running via Spring preloader in process 31147
+Loading development environment (Rails 4.2.6)
+irb(main):001:0>
+```
+
+コンソールから`Project`を作成してみる。
+
+```sh
+irb(main):001:0> p = Project.new(title: "p1");
+irb(main):002:0* p.save
+   (0.1ms)  begin transaction
+  SQL (0.6ms)  INSERT INTO "projects" ("title", "created_at", "updated_at") VALUES (?, ?, ?)  [["title", "p1"], ["created_at", "2016-04-30 03:23:33.840796"], ["updated_at", "2016-04-30 03:23:33.840796"]]
+   (2.6ms)  commit transaction
+=> true
+```
+
+`rails db`でprojectsを確認してみる。
+
+```sh
+$ rails db
+SQLite version 3.8.5 2014-08-15 22:37:57
+Enter ".help" for usage hints.
+sqlite> select * from projects;
+1|p1|2016-04-30 03:23:33.840796|2016-04-30 03:23:33.840796
+```
+
+
+### controller作成
+
+```sh
+$ rails g controller Projects # controllerは必ず複数形で。
+Running via Spring preloader in process 31316
+      create  app/controllers/projects_controller.rb
+      invoke  erb
+      create    app/views/projects
+      invoke  test_unit
+      create    test/controllers/projects_controller_test.rb
+      invoke  helper
+      create    app/helpers/projects_helper.rb
+      invoke    test_unit
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/projects.coffee
+      invoke    scss
+      create      app/assets/stylesheets/projects.scss
+```
+
+`config/routes.rb`に`products`を追加。
+
+```rb
+Rails.application.routes.draw do
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+
+  # You can have the root of your site routed with "root"
+  # root 'welcome#index'
+
+  # Example of regular route:
+  #   get 'products/:id' => 'catalog#view'
+
+  # Example of named route that can be invoked with purchase_url(id: product.id)
+  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+
+  # Example resource route (maps HTTP verbs to controller actions automatically):
+  resources :products
+Rails.application.routes.draw do
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+
+  # You can have the root of your site routed with "root"
+  # root 'welcome#index'
+
+  # Example of regular route:
+  #   get 'products/:id' => 'catalog#view'
+
+  # Example of named route that can be invoked with purchase_url(id: product.id)
+  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+
+  # Example resource route (maps HTTP verbs to controller actions automatically):
+  resources :products # projectsに関するURLを自動生成してくれる
+```
+
+`rake routes`で`projects`が反映されていることを確認できる。
+
+```sh
+$ rake routes
+      Prefix Verb   URI Pattern                  Controller#Action
+    products GET    /products(.:format)          products#index
+             POST   /products(.:format)          products#create
+ new_product GET    /products/new(.:format)      products#new
+edit_product GET    /products/:id/edit(.:format) products#edit
+     product GET    /products/:id(.:format)      products#show
+             PATCH  /products/:id(.:format)      products#update
+             PUT    /products/:id(.:format)      products#update
+             DELETE /products/:id(.:format)      products#destroy
+```
 
 
 
