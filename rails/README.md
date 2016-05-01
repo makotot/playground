@@ -403,6 +403,28 @@ $ touch app/views/projects/index.html.erb
 リンクのヘルパータグ。`<%= link_to "link text", "url" %>`。
 
 
+### 詳細画面
+
+一覧にリンクを用意する。
+```erb
+  <% @projects.each do |project| %>
+    <li><%= link_to project.title, project_path(project.id) %></li>
+  <% end %>
+```
+
+controllerに`show`を用意する。
+```rb
+def show
+end
+```
+
+`app/views/show.html.erb`を作る。
+
+```erb
+<h1><%= @project.title %></h1>
+```
+
+
 ## rails.vim
 
 `projects`コントローラへの移動。
