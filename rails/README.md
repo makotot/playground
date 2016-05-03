@@ -424,6 +424,70 @@ end
 <h1><%= @project.title %></h1>
 ```
 
+### 新規作成フォーム
+
+`index.html.erb`に新規作成画面へのリンクを追加する。
+```erb
+<div><%= link_to "Add new", new_project_path %></div>
+```
+
+`projects_controller.rb`に`new`を追加する。
+```rb
+  def new
+    @project = Project.new
+  end
+```
+
+新規作成画面のviewファイルを作成する。
+```sh
+$ touch app/views/projects/new.html.erb
+```
+`new.html.erb`を編集する。
+```erb
+<h1>Add new</h1>
+<%= form_for @project do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+```
+
+`projects_controller.rb`に`create`を追加する。
+```rb
+  def create
+    @project = Project.new(project_params)
+    @project.save
+
+    redirect_to projects_path
+  end
+
+  private
+    def project_params
+      params[:project].permit(:title)
+    end
+```
+
+### フォームにバリデーションを入れる
+
+`models/project.rb`に`validates`を追加する。
+```rb
+  validates :title, presence: true # presenceで入力必須にする
+```
+
+`controllers/projects_controller.rb`の`create`を修正して、バリデーションエラーが発生したら、  
+新規作成画面に戻るようにする。
+```rb
+    if @project.save
+      redirect_to projects_path
+    else
+      render 'new'
+    end
+```
+
 
 ## rails.vim
 
