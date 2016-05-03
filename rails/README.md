@@ -488,6 +488,35 @@ $ touch app/views/projects/new.html.erb
     end
 ```
 
+エラーの中身は`inspect`で確認できる。
+```erb
+    <% if @project.errors.any? %>
+      <%= @project.errors.inspect %>
+    <% end %>
+
+// => #<ActiveModel::Errors:0x007fab37413298 @base=#<Project id: nil, title: "", created_at: nil, updated_at: nil>, @messages={:title=>["can't be blank"]}>
+```
+
+
+```erb
+    <% if @project.errors.any? %>
+      <%= @project.errors.messages[:title][0] %>
+    <% end %>
+```
+
+エラーメッセージは`presence`でカスタマイズ可能。
+
+```rb
+  validates :title, presence: { message: "入力してください" }
+```
+
+バリデーションルールは複数指定できる。
+```rb
+  validates :title,
+  presence: { message: "入力してください" },
+  length: { minimum: 3, message: "短すぎます" }
+```
+
 
 ## rails.vim
 
