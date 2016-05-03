@@ -517,6 +517,42 @@ $ touch app/views/projects/new.html.erb
   length: { minimum: 3, message: "短すぎます" }
 ```
 
+### 編集フォーム
+
+viewに編集画面へのリンクを追加する。
+```erb
+      <%= link_to "Edit", edit_project_path(project.id) %>
+```
+
+editアクションをコントローラに追加する。
+```rb
+  def edit
+    @project = Project.find(params[:id])
+  end
+```
+
+viewファイルを追加する。
+```sh
+$ touch app/views/projects/edit.html.erb
+```
+
+```erb
+<h1>Edit</h1>
+
+<%= form_for @project do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <% if @project.errors.any? %>
+      <%= @project.errors.messages[:title][0] %>
+    <% end %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+```
+
 
 ## rails.vim
 
