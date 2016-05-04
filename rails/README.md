@@ -590,6 +590,24 @@ $ touch app/views/projects/_form.html.erb
 <%= render 'form' %>
 ```
 
+## 削除
+
+`views/projects/index.html.erb`に削除リンク追加。
+```erb
+      <%= link_to "Delete", project_path(project.id), method: :delete, data: {
+        confirm: "sure?"
+      } %>
+```
+
+`controllers/projects_controller.rb`に`destroy`を追加。
+```
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to projects_path
+  end
+```
+
 
 ## rails.vim
 
