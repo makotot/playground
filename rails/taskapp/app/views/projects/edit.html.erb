@@ -1,14 +1,3 @@
 <h1>Edit</h1>
 
-<%= form_for @project do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <% if @project.errors.any? %>
-      <%= @project.errors.messages[:title][0] %>
-    <% end %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+<%= render 'form' %>

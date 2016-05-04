@@ -553,6 +553,43 @@ $ touch app/views/projects/edit.html.erb
 <% end %>
 ```
 
+`controllers/projects_controller.rb`に`update`を追加。
+```rb
+  def update
+    @project = Project.find(params[:id])
+    if @project.update(project_params)
+      redirect_to projects_path
+    else
+      render 'edit'
+    end
+  end
+```
+
+新規作成と編集でフォームが全く同じなので、partialファイルにする。
+```sh
+$ touch app/views/projects/_form.html.erb
+```
+
+```erb
+<%= form_for @project do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <% if @project.errors.any? %>
+      <%= @project.errors.messages[:title][0] %>
+    <% end %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+```
+
+新規作成と編集のviewからは`render`でpartialファイルを読み込む。
+```erb
+<%= render 'form' %>
+```
+
 
 ## rails.vim
 
