@@ -44,8 +44,42 @@ require('./style.css')
 $ webpack ./entry.js bundle.js --module-bind 'css=style!css'
 ```
 
+## config
+
+configを`webpack.config.js`で設定できる。
+
+`webpack.config.js`を以下の通りにすると、
+```
+module.exports = {
+  entry: './entry.js',
+  output: {
+    path: __dirname,
+    filename: 'bundle.js'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.css$/,
+        loader: 'style!css'
+      }
+    ]
+  }
+}
+```
+で
+```sh
+$ webpack ./entry.js bundle.js --module-bind 'css=style!css'
+```
+と同じことが
+```sh
+$ webpack
+```
+で可能になる。
+
 
 
 ## Links
 
 - [tutorials/getting-started](http://webpack.github.io/docs/tutorials/getting-started/)
+- [Webpack — The Confusing Parts — Medium](https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9#.9rnfc94gq)
+
