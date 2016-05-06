@@ -608,6 +608,22 @@ $ touch app/views/projects/_form.html.erb
   end
 ```
 
+### before_action
+
+actionの前に行いたい処理を記述するのが、`before_action`。
+
+```rb
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
+
+  ...
+
+    def set_project
+      @project = Project.find(params[:id])
+    end
+```
+各アクションで共通している処理を関数に分けて、`before_action`で処理するようにして  
+各アクションからはその処理を削除する。
+
 
 ## rails.vim
 
