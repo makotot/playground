@@ -42,9 +42,17 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	document.write('it works')
+	document.write(__webpack_require__(1))
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	module.exports = 'it works from content'
 
 
 /***/ }
