@@ -76,6 +76,21 @@ $ webpack
 ```
 で可能になる。
 
+ターミナル上でプログレスバーを表示したい場合、
+```sh
+$ webpack --progress
+```
+
+ターミナル上で色付きで表示したい場合、
+```sh
+$ webpack --colors
+```
+
+ファイルの変更を監視したい場合、
+```sh
+$ webpack --watch
+```
+を使う。
 
 
 ## Links

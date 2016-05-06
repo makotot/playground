@@ -86,7 +86,7 @@
 
 
 	// module
-	exports.push([module.id, "body  {\n  background-color: #fff000;\n  color: #333;\n}\n", ""]);
+	exports.push([module.id, "body  {\n  background-color: #fff000;\n  color: #333;\n  line-height: 1.2;\n}\n", ""]);
 
 	// exports
 
