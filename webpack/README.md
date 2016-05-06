@@ -93,6 +93,18 @@ $ webpack --watch
 を使う。
 
 
+### webpack-dev-server
+
+webpackの開発サーバは`webpack-dev-server`をインストールすると使える。
+
+```sh
+$ npm i -g webpack-dev-server
+```
+```sh
+$ webpack-dev-server --progress
+```
+
+
 ## Links
 
 - [tutorials/getting-started](http://webpack.github.io/docs/tutorials/getting-started/)
