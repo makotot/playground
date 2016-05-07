@@ -132,4 +132,5 @@ module.exports = {
 
 - [tutorials/getting-started](http://webpack.github.io/docs/tutorials/getting-started/)
 - [Webpack — The Confusing Parts — Medium](https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9#.9rnfc94gq)
+- [ampedandwired/html-webpack-plugin: Simplifies creation of HTML files to serve your webpack bundles](https://github.com/ampedandwired/html-webpack-plugin)
 
