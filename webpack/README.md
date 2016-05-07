@@ -104,6 +104,29 @@ $ npm i -g webpack-dev-server
 $ webpack-dev-server --progress
 ```
 
+## html
+
+HTMLを出力する場合は、`html-webpack-plugin`を使う。
+
+```js
+var path = require('path')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = {
+  entry: path.join(__dirname, 'dist/index.js'),
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'app.js'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html', // <= テンプレートファイルを指定できる
+      filename: 'index.html' // <= 出力先のHTMLファイル名を指定できる
+    })
+  ]
+};
+```
+
 
 ## Links
 
