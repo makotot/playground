@@ -209,6 +209,25 @@ $ npm i --save react react-dom
 `inline`も必要?  
 
 
+## CSS
+
+```sh
+$ npm i --save-dev css-loader style-loader
+```
+
+configの`loaders`にcssを追加する。
+```js
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css']
+      }
+```
+
+```js
+import './css/app.css'
+```
+エントリーポイントのJSから`import`すれば、HTMLのheadタグ内に`app.css`のstyleが挿入される。
+
 
 
 ## Links
