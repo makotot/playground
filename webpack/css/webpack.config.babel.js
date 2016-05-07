@@ -32,7 +32,10 @@ export default {
       //},
       {
         test: /\.scss$/,
-        loader: extractCSS.extract('css!sass')
+        loader: extractCSS.extract([
+          'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+          'sass'
+        ])
       }
     ]
   },
