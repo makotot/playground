@@ -288,6 +288,19 @@ const extractCSS = new ExtractTextPlugin('./css/app.css')
 ```
 
 
+## css modules
+
+`loaders`を以下のように指定する。
+```
+      {
+        test: /\.scss$/,
+        loader: extractCSS.extract([
+          'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+          'sass'
+        ])
+      }
+```
+
 
 
 ## Links
