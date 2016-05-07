@@ -202,6 +202,13 @@ $ npm i --save-dev babel-preset-react
 $ npm i --save react react-dom
 ```
 
+## Hot Module Replacement
+
+ブラウザをリロードすることなく、アセットファイルの変更を反映する仕組み。  
+`hot`をオプションで指定するか、`HotModuleReplacementPlugin`をプラグインで指定するかで有効になる?  
+`inline`も必要?  
+
+
 
 
 ## Links
@@ -210,4 +217,5 @@ $ npm i --save react react-dom
 - [Webpack — The Confusing Parts — Medium](https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9#.9rnfc94gq)
 - [ampedandwired/html-webpack-plugin: Simplifies creation of HTML files to serve your webpack bundles](https://github.com/ampedandwired/html-webpack-plugin)
 - [babel/babel-loader: Webpack plugin for Babel](https://github.com/babel/babel-loader)
+- [webpackのHot Module ReplacementでWebフロントエンドを爆速開発 - Qiita](http://qiita.com/sergeant-wizard/items/60b557fc1c763f0a1531)
 
