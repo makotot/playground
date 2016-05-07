@@ -226,8 +226,28 @@ configの`loaders`にcssを追加する。
 ```js
 import './css/app.css'
 ```
-エントリーポイントのJSから`import`すれば、HTMLのheadタグ内に`app.css`のstyleが挿入される。
+エントリーポイントのJSから`import`すれば、HTMLのheadタグ内に`app.css`のstyleが挿入される。  
 
+
+### Sass
+
+Sassの場合は、`node-sass`と`sass-loader`を入れる。
+```sh
+$ npm i --save-dev node-sass
+```
+
+configの`loaders`は以下のように記述。
+```js
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass']
+      }
+```
+
+エントリーポイントのJSから`import`できる。
+```js
+import './scss/app.scss'
+```
 
 
 ## Links
@@ -237,4 +257,5 @@ import './css/app.css'
 - [ampedandwired/html-webpack-plugin: Simplifies creation of HTML files to serve your webpack bundles](https://github.com/ampedandwired/html-webpack-plugin)
 - [babel/babel-loader: Webpack plugin for Babel](https://github.com/babel/babel-loader)
 - [webpackのHot Module ReplacementでWebフロントエンドを爆速開発 - Qiita](http://qiita.com/sergeant-wizard/items/60b557fc1c763f0a1531)
+- [Webpackを色々いじってみる2 – unsweets.log](http://blog.unsweets.net/2016/03/webpack2.html)
 

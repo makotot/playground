@@ -1,7 +1,7 @@
 import './app'
 import Hoge from './components/hoge'
 
-import './css/app.css'
+import './scss/app.scss'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
