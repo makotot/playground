@@ -167,6 +167,23 @@ export default {
 
 ## babel-loader
 
+babelをwebpackで利用するには、`babel-loader`を利用する。
+
+```sh
+$ npm i --save-dev babel-loader
+```
+`webpack.config.babel.js`に`loader`を追加する。
+```js
+  module: {
+    loaders: [
+      {
+        test: /\.js?$/,
+        exclude: /(node_modules)/,
+        loader: 'babel'
+      }
+    ]
+  },
+```
 
 
 
