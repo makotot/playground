@@ -185,6 +185,23 @@ $ npm i --save-dev babel-loader
   },
 ```
 
+## React
+
+`preset`を追加。
+```sh
+$ npm i --save-dev babel-preset-react
+```
+```json
+{
+  "presets": ["es2015", "react"]
+}
+```
+
+`react`、`react-dom`をインストールする。
+```sh
+$ npm i --save react react-dom
+```
+
 
 
 ## Links
