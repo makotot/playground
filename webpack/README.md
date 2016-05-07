@@ -127,6 +127,44 @@ module.exports = {
 };
 ```
 
+## webpack.config.babel.js
+
+`gulp`のように`config`をes6で記述できる。
+
+```sh
+$ touch webpack.config.babel.js
+$ npm i --save-dev babel-core babel-preset-es2015
+$ touch .babelrc
+```
+
+`.babelrc`
+```json
+{
+  "presets": ["es2015"]
+}
+```
+
+`webpack.config.babel.js`
+```js
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+
+export default {
+  entry: path.join(__dirname, 'index.js'),
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'app.js'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
+      hash: true
+    })
+  ]
+};
+```
+
 
 ## Links
 
