@@ -1,6 +1,9 @@
 import path from 'path'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+
+const extractCSS = new ExtractTextPlugin('./css/app.css')
 
 export default {
   entry: path.join(__dirname, 'src/index.js'),
@@ -19,13 +22,17 @@ export default {
         exclude: /(node_modules)/,
         loaders: ['babel']
       },
-      {
-        test: /\.css$/,
-        loaders: ['style', 'css']
-      },
+      //{
+      //  test: /\.css$/,
+      //  loaders: ['style', 'css']
+      //},
+      //{
+      //  test: /\.scss$/,
+      //  loaders: ['style', 'css', 'sass']
+      //},
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
+        loader: extractCSS.extract('css!sass')
       }
     ]
   },
@@ -35,6 +42,7 @@ export default {
       template: './src/index.html',
       filename: 'index.html',
       hash: true
-    })
+    }),
+    extractCSS
   ]
 };

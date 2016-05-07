@@ -4,7 +4,9 @@ export default class Hoge extends React.Component {
 
   render () {
     return (
-      <div>Hoge</div>
+      <div>
+        <span>Hoge</span>
+      </div>
     )
   }
 }

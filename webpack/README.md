@@ -208,6 +208,8 @@ $ npm i --save react react-dom
 `hot`をオプションで指定するか、`HotModuleReplacementPlugin`をプラグインで指定するかで有効になる?  
 `inline`も必要?  
 
+Reactの場合は、[babel-preset-react-hmre](https://github.com/danmartinez101/babel-preset-react-hmre)が良さそう。
+
 
 ## CSS
 
@@ -249,6 +251,44 @@ configの`loaders`は以下のように記述。
 import './scss/app.scss'
 ```
 
+## CSSを外部ファイルに出力
+
+[extract-text-webpack-plugin](https://github.com/webpack/extract-text-webpack-plugin)を使う。
+
+```sh
+$ npm i --save-dev extract-text-webpack-plugin
+```
+
+```js
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+
+const extractCSS = new ExtractTextPlugin('./css/app.css')
+// 対象のCSSファイルを指定してインスタンス生成
+
+...
+
+// loadersに追加
+      {
+        test: /\.scss$/,
+        loader: extractCSS.extract('css!sass')
+      }
+
+...
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
+      hash: true
+    }),
+    extractCSS
+    // プラグインに追加
+  ]
+```
+
+
+
 
 ## Links
 
@@ -258,4 +298,4 @@ import './scss/app.scss'
 - [babel/babel-loader: Webpack plugin for Babel](https://github.com/babel/babel-loader)
 - [webpackのHot Module ReplacementでWebフロントエンドを爆速開発 - Qiita](http://qiita.com/sergeant-wizard/items/60b557fc1c763f0a1531)
 - [Webpackを色々いじってみる2 – unsweets.log](http://blog.unsweets.net/2016/03/webpack2.html)
-
+- [webpack-dev-serverの基本的な使い方とポイント - dackdive's blog](http://dackdive.hateblo.jp/entry/2016/05/07/183335)
