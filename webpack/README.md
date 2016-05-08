@@ -288,7 +288,9 @@ const extractCSS = new ExtractTextPlugin('./css/app.css')
 ```
 
 
-## css modules
+### css modules
+
+`css-loader`が必要。  
 
 `loaders`を以下のように指定する。
 ```
@@ -299,6 +301,41 @@ const extractCSS = new ExtractTextPlugin('./css/app.css')
           'sass'
         ])
       }
+```
+
+### postcss
+
+[postcss-loader](https://github.com/postcss/postcss-loader)をインストールする。
+
+```sh
+$ npm i --save-dev postcss-loader autoprefixer cssnano
+```
+
+`loaders`を以下の通りにする。
+```js
+      {
+        test: /\.(scss|css)$/,
+        loader: extractCSS.extract([
+          'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+          'postcss',
+          'sass',
+        ])
+      }
+```
+
+`postcss`のプラグインを読み込む。
+```
+import autoprefixer from 'autoprefixer'
+import cssnano from 'cssnano'
+
+...
+
+  postcss () {
+    return [
+      autoprefixer,
+      cssnano
+    ]
+  },
 ```
 
 

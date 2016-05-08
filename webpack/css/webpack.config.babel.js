@@ -3,6 +3,9 @@ import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
+import autoprefixer from 'autoprefixer'
+import cssnano from 'cssnano'
+
 const extractCSS = new ExtractTextPlugin('./css/app.css')
 
 export default {
@@ -31,12 +34,19 @@ export default {
       //  loaders: ['style', 'css', 'sass']
       //},
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         loader: extractCSS.extract([
           'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-          'sass'
+          'postcss',
+          'sass',
         ])
       }
+    ]
+  },
+  postcss () {
+    return [
+      autoprefixer,
+      cssnano
     ]
   },
   plugins: [
