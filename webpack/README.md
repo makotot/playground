@@ -349,3 +349,4 @@ import cssnano from 'cssnano'
 - [webpackのHot Module ReplacementでWebフロントエンドを爆速開発 - Qiita](http://qiita.com/sergeant-wizard/items/60b557fc1c763f0a1531)
 - [Webpackを色々いじってみる2 – unsweets.log](http://blog.unsweets.net/2016/03/webpack2.html)
 - [webpack-dev-serverの基本的な使い方とポイント - dackdive's blog](http://dackdive.hateblo.jp/entry/2016/05/07/183335)
+- [Add documentation to readme on how to use with sass-loader · Issue #42 · postcss/postcss-loader](https://github.com/postcss/postcss-loader/issues/42)
