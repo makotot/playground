@@ -625,6 +625,18 @@ actionの前に行いたい処理を記述するのが、`before_action`。
 各アクションからはその処理を削除する。
 
 
+## Taskの設定
+
+modelの作成。
+```sh
+$ rails g model Task title done:boolean project:references
+```
+
+```sh
+$ rake db:migrate
+```
+
+
 ## rails.vim
 
 `projects`コントローラへの移動。
