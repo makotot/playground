@@ -636,6 +636,43 @@ $ rails g model Task title done:boolean project:references
 $ rake db:migrate
 ```
 
+## Associationの設定
+
+`models/project.rb`の方で`task`との関連付けをする。
+
+```rb
+class Project < ActiveRecord::Base
+  # 1つのprojectに対して複数のtaskが持てるので、has_manyで関連付ける
+  has_many :tasks
+  validates :title,
+  presence: { message: "入力してください" },
+  length: { minimum: 3, message: "短すぎます" }
+end
+```
+
+`config/routes.rb`にも追加する。
+```rb
+  resources :projects do
+    resources :tasks, only: [:create, :destroy]
+  end
+```
+`projects/:project_id/tasks/`の形でroutesが作られる。
+```sh
+❯ rake routes
+       Prefix Verb   URI Pattern                               Controller#Action
+project_tasks POST   /projects/:project_id/tasks(.:format)     tasks#create
+ project_task DELETE /projects/:project_id/tasks/:id(.:format) tasks#destroy
+     projects GET    /projects(.:format)                       projects#index
+              POST   /projects(.:format)                       projects#create
+  new_project GET    /projects/new(.:format)                   projects#new
+ edit_project GET    /projects/:id/edit(.:format)              projects#edit
+      project GET    /projects/:id(.:format)                   projects#show
+              PATCH  /projects/:id(.:format)                   projects#update
+              PUT    /projects/:id(.:format)                   projects#update
+              DELETE /projects/:id(.:format)                   projects#destroy
+         root GET    /                                         projects#index
+```
+
 
 ## rails.vim
 
