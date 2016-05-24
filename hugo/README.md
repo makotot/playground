@@ -90,6 +90,7 @@ content
     └── good-to-great.md
 ```
 
+## server
 ```sh
 ❯ hugo server
 0 of 1 draft rendered
@@ -108,6 +109,15 @@ Press Ctrl+C to stop
 ```sh
 $ hugo server --buildDrafts
 ```
+
+## theme
+
+```sh
+$ mkdir themes && cd themes
+$ git clone https://github.com/dim0627/hugo_theme_robust.git
+$ cd ..
+```
+
 
 ## Links
 
