@@ -673,6 +673,22 @@ project_tasks POST   /projects/:project_id/tasks(.:format)     tasks#create
          root GET    /                                         projects#index
 ```
 
+### Task新規作成フォーム
+
+view(views/projects/show.html.erb)にフォームを入れる。
+```erb
+<h1><%= @project.title %></h1>
+<ul>
+<% @project.tasks.each do |task| %>
+  <li><%= task.title %></li>
+<% end %>
+<%= form_for [@project, @project.tasks.build] do |f| %>
+  <%= f.text_field :title %>
+  <%= f.submit %>
+<% end %>
+</ul>
+```
+
 
 ## rails.vim
 
