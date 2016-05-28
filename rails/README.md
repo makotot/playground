@@ -689,6 +689,32 @@ view(views/projects/show.html.erb)にフォームを入れる。
 </ul>
 ```
 
+`tasks_controller.rb`を用意する。
+```rb
+class TasksController < ApplicationController
+  def create
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.create(task_params)
+    redirect_to project_path(@project.id)
+  end
+
+  private
+    def task_params
+      params[:task].permit(:title)
+    end
+end
+```
+
+バリデーションも設定する。
+
+```rb
+class Task < ActiveRecord::Base
+  belongs_to :project
+  validates :title, presence: true
+end
+```
+
+
 
 ## rails.vim
 
