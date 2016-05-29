@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :tasks, only: [:create, :destroy]
   end
 
+  post 'projects/:project_id/tasks/:id/toggle' => 'tasks#toggle'
+
   root 'projects#index'
 
   # Example resource route with options:

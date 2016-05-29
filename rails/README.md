@@ -714,6 +714,71 @@ class Task < ActiveRecord::Base
 end
 ```
 
+### タスクを削除できるようにする
+
+viewに削除リンク追加。
+```erb
+    <%= link_to "delete", project_task_path(task.project.id, task.id), method: :delete, data: {confirm: "sure?"} %>
+```
+
+controllerにdestroyメソッド追加。
+```rb
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to project_path(params[:project_id])
+  end
+```
+
+### check_box_tag
+
+各taskに対してcheckboxをつける。
+`check_box_tag`でcheckboxになる。
+```erb
+    <%= check_box_tag '', '', task.done, {'data-id' => task.id, 'data-project_id' => task.project_id} %>
+```
+
+非同期で処理するので、JSを追加。
+```
+<script>
+  $(function () {
+    $('input[type=checkbox]').on('click', function () {
+      $.post('/projects/' + $(this).data('project_id') + '/tasks/' + $(this).data('id') + '/toggle')
+    });
+  });
+</script>
+```
+あわせて、routesも更新。
+
+```rb
+  post 'projects/:project_id/tasks/:id/toggle' => 'tasks#toggle'
+```
+
+controllerに`toggle`を定義。
+```rb
+  def toggle
+    render nothing: true # テンプレートは不要なので、renderしないように指定
+    @task = Task.find(params[:id])
+    @task.done = !@task.done
+    @task.save
+  end
+```
+
+### taskの数を表示する
+
+単純に`views/projects/index.html.erb`に以下を追加する。
+```erb
+      (<%= project.tasks.count %>)
+```
+
+`scope`を使って、未完了件数も取れるようにする。
+```rb
+  scope :unfinished, -> { where(done: false) }
+```
+```erb
+      (<%= project.tasks.unfinished.count %>/<%= project.tasks.count %>)
+```
+
 
 
 ## rails.vim
