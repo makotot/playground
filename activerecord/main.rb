@@ -45,7 +45,20 @@ end
 #p Post.order("id desc").limit(3)
 #p Post.top3
 #Post.where(:title => "title5").first_or_create
-Post.where(:title => "title6").first_or_create do |p|
-  p.body = "hello6"
-end
+#Post.where(:title => "title6").first_or_create do |p|
+#  p.body = "hello6"
+#end
+#p Post.all
+
+#post = Post.find(1)
+#post.title = "new title"
+#post.save
+#post = Post.find(1)
+#post.update_attribute(:title, "new title!")
+#post = Post.find(1)
+#post.update_attributes(:title => "nnn", :body => "hhh")
+#p Post.first
+
+Post.where(:id => 1..2).update_all(:title => "nnn2", :body => "hhh2")
+
 p Post.all
