@@ -9,11 +9,30 @@ ActiveRecord::Base.establish_connection(
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 class Post < ActiveRecord::Base
+  has_many :comments, :dependent => :destroy
+
   validates :title, :presence => true
   validates :body, :length => { :minimum => 5 }
 
   scope :top3, -> { order("created_at").limit(3) }
 end
+
+class Comment < ActiveRecord::Base
+  belongs_to :post
+end
+
+p Post.all
+p Comment.all
+
+Post.find(1).destroy
+
+p Post.all
+p Comment.all
+
+#post = Post.find(1)
+#post.comments.each do |comment|
+#  p comment.body
+#end
 
 #post = Post.new(:title => "title1", :body => "hello1")
 
@@ -67,12 +86,12 @@ end
 #Post.where(:id => 1..2).delete_all
 #Post.find(3).destroy
 
-post = Post.new(:body => "123")
-post.save
-#post.save!
-
-if !post.save
-  p post.errors.messages
-end
-
-p Post.all
+#post = Post.new(:body => "123")
+#post.save
+##post.save!
+#
+#if !post.save
+#  p post.errors.messages
+#end
+#
+#p Post.all
