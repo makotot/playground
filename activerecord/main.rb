@@ -9,6 +9,9 @@ ActiveRecord::Base.establish_connection(
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 class Post < ActiveRecord::Base
+  validates :title, :presence => true
+  validates :body, :length => { :minimum => 5 }
+
   scope :top3, -> { order("created_at").limit(3) }
 end
 
@@ -59,6 +62,17 @@ end
 #post.update_attributes(:title => "nnn", :body => "hhh")
 #p Post.first
 
-Post.where(:id => 1..2).update_all(:title => "nnn2", :body => "hhh2")
+#Post.where(:id => 1..2).update_all(:title => "nnn2", :body => "hhh2")
+
+#Post.where(:id => 1..2).delete_all
+#Post.find(3).destroy
+
+post = Post.new(:body => "123")
+post.save
+#post.save!
+
+if !post.save
+  p post.errors.messages
+end
 
 p Post.all
