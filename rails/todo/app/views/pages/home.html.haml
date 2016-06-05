@@ -1,0 +1,26 @@
+.row-fluid
+  .span10.offset1
+    .hero-unit.text-center
+      %h1
+        Todo
+      %p
+        Welcome to the Todo tutorial
+
+.container
+  - if @tasks.empty?
+    %span.text-warning there are no tasks.
+  - else
+    %table.table.table-hover.table-bordered
+      %thead
+        %tr
+          %th title
+          %th created at
+          %th completed
+        %tbody
+          - @tasks.each do |task|
+            %tr
+              %td
+                %strong= task.title
+              %td.text-info= task.created_at
+              %td.text-success= task.completed
+
