@@ -6,4 +6,10 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    .container
+      .jumbotron
+        %h1
+          Todo
+          %small Tutorial Application
+        = link_to 'New Task', new_task_path, class: 'btn btn-primary', remote: true
     = yield
