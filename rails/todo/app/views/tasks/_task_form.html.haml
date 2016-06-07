@@ -1,0 +1,9 @@
+.modal-header
+  %h1 new task
+= simple_form_for task, class: 'clearfix' do |f|
+  .modal-body
+    = f.input :title
+    = f.input :note
+    = f.input :completed
+  .modal-footer
+    = f.submit 'save', class: 'btn btn-primary'
