@@ -34,7 +34,8 @@
 }
 
 .growed__item {
-  flex-grow: 0;
+  flex: 0 1 0;
+  min-width: 0;
 }
 
 .growed__item--1 {
