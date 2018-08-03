@@ -7,7 +7,8 @@ const Flex = (props) => {
     props.col && 'flex--col',
     props.s && 'flex--s',
     props.m && 'flex--m',
-    props.l && 'flex--l'
+    props.l && 'flex--l',
+    props.align && `flex--align-${ props.align }`
   )
 
   return (
@@ -23,6 +24,8 @@ const FlexItem = (props) => {
     props.left && 'flex__item--left',
     props.center && 'flex__item--center',
     props.right && 'flex__item--right',
+    props.align && `flex__item--align-${ props.align }`,
+    Number.isInteger(props.growed) && `flex__item--growed-${ props.growed }`
   )
 
   return (

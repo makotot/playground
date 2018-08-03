@@ -7,6 +7,18 @@
     flex-direction: column;
   }
 
+  &--align-start {
+    align-items: flex-start;
+  }
+
+  &--align-end {
+    align-items: flex-end;
+  }
+
+  &--align-center {
+    align-items: center;
+  }
+
   $spaces: (
     s: '8px',
     m: '16px',
@@ -83,5 +95,18 @@
 
   &--col > &__item--align-center {
     align-self: center;
+  }
+
+  &__item--growed-0 {
+    flex-grow: 0;
+    min-width: auto;
+  }
+
+  @for $i from 1 through 11 {
+
+    &__item--growed-#{ $i } {
+      flex: $i 1 0;
+      min-width: 0;
+    }
   }
 }

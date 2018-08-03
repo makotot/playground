@@ -27,5 +27,33 @@ storiesOf('flex', module)
         <FlexItem><Dummy>flex</Dummy></FlexItem>
         <FlexItem right><Dummy>flex</Dummy></FlexItem>
       </Flex>
+      <Flex align="center">
+        <FlexItem><Dummy>flex<br />flex</Dummy></FlexItem>
+        <FlexItem><Dummy>flex</Dummy></FlexItem>
+        <FlexItem><Dummy>flex</Dummy></FlexItem>
+      </Flex>
+      <Flex>
+        <FlexItem><Dummy>flex<br />flex</Dummy></FlexItem>
+        <FlexItem align="center"><Dummy>flex</Dummy></FlexItem>
+        <FlexItem><Dummy>flex</Dummy></FlexItem>
+      </Flex>
+      <Flex>
+        <FlexItem growed={ 1 }><Dummy>flex</Dummy></FlexItem>
+        <FlexItem growed={ 2 }><Dummy>flex</Dummy></FlexItem>
+        <FlexItem growed={ 3 }><Dummy>flex</Dummy></FlexItem>
+      </Flex>
+      <Flex>
+        <FlexItem growed={ 10 }><Dummy>flex</Dummy></FlexItem>
+        <FlexItem growed={ 1 }><Dummy>flex</Dummy></FlexItem>
+        <FlexItem growed={ 1 }><Dummy>flex</Dummy></FlexItem>
+      </Flex>
+      <Flex>
+        <FlexItem growed={ 10 }><Dummy>flex</Dummy></FlexItem>
+        <FlexItem growed={ 0 }><Dummy>flex</Dummy></FlexItem>
+      </Flex>
+      <Flex s>
+        <FlexItem growed={ 3 }><Dummy>flex</Dummy></FlexItem>
+        <FlexItem growed={ 2 }><Dummy>flex</Dummy></FlexItem>
+      </Flex>
     </div>
   ))
